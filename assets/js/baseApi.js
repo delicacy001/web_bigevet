@@ -11,7 +11,7 @@ $.ajaxPrefilter(function(options) {
         //统一为有权限的接口，设置complete,设置权限控制
         options.complete = function(res) {
             //无论成功还是失败，都会调用该函数
-            console.log("执行了complete回调函数！");
+            // console.log("执行了complete回调函数！");
             //可以使用responseJSON拿到服务器相应的数据
             if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
                 //1、强制清空token
