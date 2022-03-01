@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章列表</title>
+    <link rel="stylesheet" href="../assets/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="art_list.css">
+</head>
+
+<body>
+    <!-- 卡片区域 -->
+    <div class="layui-card">
+        <div class="layui-card-header">文章列表</div>
+        <div class="layui-card-body">
+            <!-- 筛选区域 -->
+            <!-- 列表区域 -->
+            <table class="layui-table">
+                <colgroup>
+                    <col>
+                    <col width="200">
+                    <col width="200">
+                    <col width="200">
+                    <col width="200">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>文章标题</th>
+                        <th>分类</th>
+                        <th>发表时间</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="listTbody">
+                    <tr>
+                        <td>ababa</td>
+                        <td>科技</td>
+                        <td>2016-11-29 17:23:19</td>
+                        <td>已发布</td>
+                        <td><button type="button" id='' class="layui-btn layui-btn-xs btnEdit">编辑</button>
+                            <button type="button" idn='' class="layui-btn layui-btn-xs layui-btn-danger btnDel">删除</button></td>
+                    </tr>
+                    <tr>
+                        <td>666</td>
+                        <td>股市</td>
+                        <td>2020-01-9 12:20:12</td>
+                        <td>已发布</td>
+                        <td><button type="button" id='' class="layui-btn layui-btn-xs btnEdit">编辑</button>
+                            <button type="button" idn='' class="layui-btn layui-btn-xs layui-btn-danger btnDel">删除</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- 分页区域 -->
+        </div>
+    </div>
+    <script type="text/html" id="listFormat">
+        {{each data}}
+        <tr id=''>
+            <td>{{$value.title}}</td>
+            <td>{{$value.cate_name}}</td>
+            <td>{{$value.pub_date}}</td>
+            <td>{{$value.state}}</td>
+            <td>
+                <button type="button" id={{$value.Id}} class="layui-btn layui-btn-xs btnEdit">编辑</button>
+                <button type="button" idn={{$value.Id}} class="layui-btn layui-btn-xs layui-btn-danger btnDel">删除</button>
+            </td>
+        </tr>
+        {{/each}}
+    </script>
+    <!-- 导入layui的js文件 -->
+    <script src="../assets/lib/layui/layui.all.js"></script>
+    <!-- 导入jquery的js文件 -->
+    <script src="../assets/lib/jquery.js"></script>
+    <!-- 导入模板引擎的js文件 -->
+    <script src="../assets/js/template-web.js"></script>
+    <!-- 导入自己封装的baseApi.js -->
+    <script src="../assets/js/baseApi.js"></script>
+    <!-- 导入自定义的js文件 -->
+    <script src="art_list.js"></script>
+</body>
+
+</html>
