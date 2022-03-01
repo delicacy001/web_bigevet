@@ -33,7 +33,7 @@ $(function() {
         }
     });
     // 发送提交修改数据信息
-    $('#updateSubmit').on('submit', function(e) {
+    $('#updateSubmit').on('click', function(e) {
         e.preventDefault();
         $.ajax({
             method: 'POST',
@@ -45,7 +45,7 @@ $(function() {
             // },
             data: $('#passFormInfo').serialize(),
             success: function(res) {
-                if (res.status != 0) {
+                if (res.status !== 0) {
                     return layui.layer.msg("更新用户密码失败！");
                 }
                 console.log(res);

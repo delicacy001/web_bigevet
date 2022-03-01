@@ -53,7 +53,7 @@ $(function() {
             initUserInfo();
         })
         // 发送修改数据表单信息
-    $('#btnSubmit').on('submit', function(e) {
+    $('#btnSubmit').on('click', function(e) {
         e.preventDefault();
         $.ajax({
             method: 'POST',
@@ -65,7 +65,7 @@ $(function() {
             // },
             data: $('#userFormInfo').serialize(),
             success: function(res) {
-                if (res.status != 0) {
+                if (res.status !== 0) {
                     return layui.layer.msg("修改用户信息失败！");
                 }
                 // console.log(res);
