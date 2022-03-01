@@ -33,7 +33,7 @@ $(function() {
         }
     });
     // 发送提交修改数据信息
-    $('#updateSubmit').on('click', function(e) {
+    $('#passFormInfo').on('submit', function(e) {
         e.preventDefault();
         $.ajax({
             method: 'POST',

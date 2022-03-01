@@ -53,7 +53,7 @@ $(function() {
             initUserInfo();
         })
         // 发送修改数据表单信息
-    $('#btnSubmit').on('click', function(e) {
+    $('#userFormInfo').on('submit', function(e) {
         e.preventDefault();
         $.ajax({
             method: 'POST',
@@ -68,7 +68,7 @@ $(function() {
                 if (res.status !== 0) {
                     return layui.layer.msg("修改用户信息失败！");
                 }
-                // console.log(res);
+                console.log(res);
                 //调用父页面中的方法，重新渲染用户的头像和用户的信息
                 parent.window.getUserInfo();
                 layui.layer.msg('修改用户信息成功！');
