@@ -20,7 +20,7 @@
             <!-- 文章内容 -->
             <!-- 文章封面 -->
 
-            <form class="layui-form" action="">
+            <form class="layui-form" action="" id="pubForm">
                 <!-- 文章标题 -->
                 <div class="layui-form-item">
                     <label class="layui-form-label">文章标题</label>
@@ -31,13 +31,20 @@
                 <!-- 文章类别 -->
                 <div class="layui-form-item">
                     <label class="layui-form-label">文章类别</label>
-                    <div class="layui-input-block" id="selectList">
-                        <!-- 此处由模板引擎渲染 -->
-                        <!-- <select name="selectCat" lay-verify="required" id="selectList"> -->
-                        <!-- <option value="">请选择文章类别</option>
-                            <option value="0">深圳</option>
-                            <option value="1">南京</option> -->
-                        <!-- </select> -->
+                    <div class="layui-input-block">
+                        <select name="cate_id" lay-verify="required" id="selectList">
+                            <!-- 此处由layui模板引擎渲染 -->
+                        </select>
+                    </div>
+                </div>
+                <!-- 文章内容 -->
+                <div class="layui-form-item">
+                    <!-- 左侧的 label -->
+                    <label class="layui-form-label">文章内容</label>
+                    <!-- 为富文本编辑器外部的容器设置高度 -->
+                    <div class="layui-input-block" style="height: 800px;">
+                        <!-- 重要：将来这个 textarea 会被初始化为富文本编辑器 -->
+                        <textarea name="content"></textarea>
                     </div>
                 </div>
                 <!-- 文章封面 -->
@@ -45,29 +52,26 @@
                     <label class="layui-form-label">文章封面</label>
                     <div class="layui-input-block">
                         <!-- 封面部分代码 -->
-                        <!-- 第一行的图片裁剪和预览区域 -->
-                        <div class="row1">
-                            <!-- 图片裁剪区域 -->
-                            <div class="cropper-box">
-                                <!-- 这个 img 标签很重要，将来会把它初始化为裁剪区域 -->
-                                <img id="image" src="../assets/images/sample.jpg" />
-                            </div>
-                            <!-- 图片的预览区域 -->
-                            <div class="preview-box">
-                                <div>
-                                    <!-- 宽250高为 200px 的预览区域 -->
-                                    <div class="img-preview w200"></div>
-                                    <p class="size">200 x 200</p>
+                        <div class="layui-form-item">
+                            <!-- 左侧的 label -->
+                            <label class="layui-form-label">文章封面</label>
+                            <!-- 选择封面区域 -->
+                            <div class="layui-input-block cover-box">
+                                <!-- 左侧裁剪区域 -->
+                                <div class="cover-left">
+                                    <img id="image" src="../assets/images/sample2.jpg" alt="" />
+
                                 </div>
-                                <button type="button" id="btnUpload" class="layui-btn layui-btn-danger">选择封面</button>
+                                <!-- 右侧预览区域和选择封面区域 -->
+                                <div class="cover-right">
+                                    <!-- 预览的区域 -->
+                                    <div class="img-preview"></div>
+                                    <!-- 通过accept可以指定允许用户选择神魔类型的图片 -->
+                                    <input type="file" id="file" accept="image/png,image/jpeg" style="display: none;">
+                                    <!-- 选择封面按钮 -->
+                                    <button type="button" id="btnUpload" class="layui-btn layui-btn-danger">选择封面</button>
+                                </div>
                             </div>
-
-                        </div>
-
-                        <!-- 第二行的按钮区域 -->
-                        <div class="row2">
-                            <!-- 通过accept可以指定允许用户选择神魔类型的图片 -->
-                            <input type="file" id="file" accept="image/png,image/jpeg" style="display: none;">
                         </div>
                     </div>
                 </div>
@@ -75,29 +79,26 @@
                 <div class="layui-form-item">
                     <div class="layui-input-block">
                         <button class="layui-btn" lay-submit lay-filter="formDemo">发布</button>
-                        <button id="saveForNext" class="layui-btn layui-btn-primary">存为草稿</button>
+                        <button id="saveFor" class="layui-btn layui-btn-primary">存为草稿</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-    <!-- <script type="text/html" id="tplSelect">
-        <option value="">请选择文章类别</option>
-        {{each data}}
-        <option value='{{$index}}'>{{$value.name}}</option>
-        {{/each}}
-    </script> -->
     <!-- 导入layui的js文件 -->
     <script src="../assets/lib/layui/layui.all.js"></script>
     <!-- 导入jquery的js文件 -->
     <script src="../assets/lib/jquery.js"></script>
+    <!-- 导入自己封装的baseApi.js -->
+    <script src="../assets/js/baseApi.js"></script>
     <!-- 导入cropper的js文件 -->
     <script src="../assets/lib/cropper/Cropper.js"></script>
     <script src="../assets/lib/cropper/jquery-cropper.js"></script>
+    <!-- 富文本 -->
+    <script src="../assets/lib/tinymce/tinymce.min.js"></script>
+    <script src="../assets/lib/tinymce/tinymce_setup.js"></script>
     <!-- 导入模板引擎的js文件 -->
     <script src="../assets/js/template-web.js"></script>
-    <!-- 导入自己封装的baseApi.js -->
-    <script src="../assets/js/baseApi.js"></script>
     <!-- 导入自定义的js文件 -->
     <script src="art_pub.js"></script>
 </body>
