@@ -13,7 +13,7 @@ $.ajaxPrefilter(function(options) {
             //无论成功还是失败，都会调用该函数
             // console.log("执行了complete回调函数！");
             //可以使用responseJSON拿到服务器相应的数据
-            console.log(res);
+            // console.log(res);
             if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
                 //1、强制清空token
                 localStorage.removeItem('token');

@@ -1,4 +1,25 @@
 $(function() {
+    var form = layui.form;
+    //创建变量sear来接受window.location.search的值
+    var idStr = window.location.search; //即为"?id=1511411"
+    // console.log("idStr为：" + idStr);
+    if (idStr.indexOf('?') !== -1) {
+        idStr = idStr.split('=')[1];
+    }
+    $.ajax({
+        method: 'GET',
+        url: '/my/article/' + idStr,
+        data: {},
+        success: function(res) {
+            if (res.status !== 0) {
+                return layer.msg('获取文章信息失败！');
+            }
+            // console.log(res);
+            // 设置表单默认用户名 或者使用form.val("filtername",data数据)
+            form.val('formEditInfo', res.data);
+            layer.msg('获取文章信息成功！');
+        }
+    });
     //文章分类渲染
     initSelect();
 
@@ -131,4 +152,5 @@ $(function() {
             }
         });
     }
+
 })
