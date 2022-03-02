@@ -17,7 +17,7 @@
         <div class="layui-card-header">编辑文章</div>
         <div class="layui-card-body">
             <!-- 表单结构 -->
-            <form class="layui-form" action="" id="pubForm">
+            <form class="layui-form" action="" id="pubForm" lay-filter="formEditInfo">
                 <!-- 文章标题 -->
                 <div class="layui-form-item">
                     <label class="layui-form-label">文章标题</label>
@@ -41,7 +41,7 @@
                     <!-- 为富文本编辑器外部的容器设置高度 -->
                     <div class="layui-input-block" style="height: 800px;">
                         <!-- 重要：将来这个 textarea 会被初始化为富文本编辑器 -->
-                        <textarea name="content"></textarea>
+                        <textarea name="content" id="textAreaCon"></textarea>
                     </div>
                 </div>
                 <!-- 文章封面 -->
@@ -56,15 +56,16 @@
                             <div class="layui-input-block cover-box">
                                 <!-- 左侧裁剪区域 -->
                                 <div class="cover-left">
-                                    <img id="image" src="../assets/images/sample2.jpg" alt="" />
-
+                                    <!-- <img id="image" class="preImgTest" src="../assets/images/sample2.jpg" alt="" /> -->
+                                    <img id="image" class="preImgTest" src="" alt="" />
                                 </div>
                                 <!-- 右侧预览区域和选择封面区域 -->
                                 <div class="cover-right">
                                     <!-- 预览的区域 -->
                                     <div class="img-preview"></div>
                                     <!-- 通过accept可以指定允许用户选择神魔类型的图片 -->
-                                    <input type="file" id="file" accept="image/png,image/jpeg" style="display: none;">
+                                    <!-- name="cover_img" -->
+                                    <input type="file" id="fileHidden" accept="image/png,image/jpeg" style="display: none;">
                                     <!-- 选择封面按钮 -->
                                     <button type="button" id="btnUpload" class="layui-btn layui-btn-danger">选择封面</button>
                                 </div>

@@ -84,9 +84,7 @@ $(function() {
         // 将裁剪后的图片，输出为 文件对象
         // 将 Canvas 画布上的内容，转化为 base64 格式的字符串
         // console.log("打印一下formdata对象");
-        // fd.forEach(function(v, k) {
-        //     console.log(k, v);
-        // });
+        // console.log(fd['cover_img']);
         // console.log("打印一下formdata对象");
         $image.cropper('getCroppedCanvas', {
             // 创建一个 Canvas 画布
@@ -97,11 +95,10 @@ $(function() {
             // console.log("打印一下blob对象");
             // console.log(blob);
             // console.log("打印一下blob对象");
+            // fd['cover_img'] = blob;
             fd.append('cover_img', blob);
             // console.log("打印一下formdata对象");
-            // fd.forEach(function(v, k) {
-            //     console.log(k, v);
-            // });
+            // console.log(fd['cover_img']);
             // console.log("打印一下formdata对象");
             // 发送ajax请求
             publishArticle(fd);
