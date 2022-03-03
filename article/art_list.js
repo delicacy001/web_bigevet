@@ -7,7 +7,7 @@ $(function() {
     //需要将请求参数对象提交到服务器
     var q = {
         pagenum: 1, //页码值
-        pagesize: 3, //每页显示几条数据
+        pagesize: 10, //每页显示几条数据
         cate_id: '', //文章分类的Id默认为空
         state: '' //文章的发布状态
     };
@@ -133,7 +133,7 @@ $(function() {
             count: total,
             //指定默认显示几条数据
             limit: q.pagesize,
-            limits: [3, 5, 8, 12],
+            limits: [10, 15, 18, 20],
             layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
             //指定默认显示第几页
             curr: q.pagenum,

@@ -33,7 +33,8 @@ $(function() {
         initSelect(data.cate_id);
         // 初始化富文本编辑器
         initEditor();
-        $("#textAreaCon").val(data.content);
+        // $("#textAreaCon").val(data.content);
+        $("#textAreaCon").html(data.content);
         //试图重现封面内容
         sendRequest(data.cover_img);
     }
@@ -107,6 +108,11 @@ $(function() {
         $('#selectList').html(html);
         layui.form.render("select");
     }
+
+    // var tinyID = 'textAreaCon';
+    // $('#refreshBtn').on("click", function() {
+    //         tinyMCE.editors[tinyID].save();
+    //     })
     // 封面图片部分js代码
     //2、实现图片文件上传功能
     //首先，需要为选择封面按钮绑定点击事件
@@ -137,12 +143,20 @@ $(function() {
         e.preventDefault();
     });
     // 为表单绑定submit提交事件
-    $('#pubForm').on("submit", function(e) {
+    $('#editForm').on("submit", function(e) {
         // 1、阻止表单默认提交行为
         e.preventDefault();
         // 2、基于表单创建FormData对象
         var fd = new FormData($(this)[0]);
         // 3、将文章的发布状态存到fd中
+        //textarea中内容发生改变时，及时更新value值
+        // 提交数据之前一定同步富文本编辑器的数据到textarea
+        var tinyID = 'textAreaCon';
+        tinyMCE.editors[tinyID].save();
+        var con = $("#textAreaCon").val();
+        //     $("#textAreaCon").val($(this).html());
+        // });
+        fd.append('content', con);
         fd.append('state', art_state);
         fd.append('Id', parseInt(idStr));
         // 4、将图片blob文件存到fd中
@@ -164,11 +178,12 @@ $(function() {
             // console.log("打印一下blob对象");
             // fd['cover_img'] = blob;
             fd.append('cover_img', blob);
-            // console.log("打印一下formdata对象");
-            // fd.forEach(function(v, k) {
-            //     console.log(k, v);
-            // });
-            // console.log("打印一下formdata对象");
+            console.log("打印一下formdata对象");
+            fd.forEach(function(v, k) {
+                console.log(k, v);
+            });
+            console.log(fd);
+            console.log("打印一下formdata对象");
             // 发送ajax请求
             publishArticle(fd);
         })
@@ -194,4 +209,5 @@ $(function() {
             }
         });
     }
+
 })
